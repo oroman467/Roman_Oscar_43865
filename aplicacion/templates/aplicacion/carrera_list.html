@@ -1,0 +1,62 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+{% block titulo %} Carreras {% endblock titulo %}
+{% block cabecera %} Carreras {% endblock cabecera %}
+{% block contenido %}
+<table>
+    <tr>
+        <td width="200"><h2>Carreras</h2></td>
+        <td>
+            <a
+            href="{% url 'create_carrera' %}"
+            class="btn btn-primary btn-sm"
+            ><i class="fa fa-plus fa-lg" title="New Record"> </i>
+            </a>
+        </td>
+    </tr>
+</table>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Etapa</th>
+            <th>Km</th>  
+            <th>Tipo</th>
+            <th>Acciones</th>    
+        </tr>
+    </thead>
+    <tbody>
+    {% for p in carrera_list %}
+    <tr>
+        <td>{{ p.id }}</td>
+        <td>{{ p.nombre }}</td>
+        <td>{{ p.etapa }}</td>
+        <td>{{ p.km }}</td>
+        <td>{{ p.tipo }}</td>
+        <td>
+            <a
+              href="{% url 'detail_carrera' p.id %}"
+              class="btn btn-info"
+              style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+              ><i class="fa fa-search fa-sm" title="View Record"></i>
+            </a>   
+            <a
+              href="{% url 'update_carrera' p.id %}"
+              class="btn btn-primary"
+              style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+              ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
+            </a>
+            <a
+              href="{% url 'delete_carrera' p.id %}"
+              class="btn btn-danger"
+              style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+              ><i class="fa fa-trash fa-sm" title="Delete Record"></i>
+            </a>
+          </td> 
+        </tr>
+    </tr>
+    {% endfor %}
+    </tbody> 
+</table>
+{% endblock contenido %}

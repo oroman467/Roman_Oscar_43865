@@ -1,0 +1,31 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+{% block titulo %} Grupos {% endblock titulo %}
+{% block cabecera %} Grupos {% endblock cabecera %}
+{% block contenido %}
+<table>
+    <tr>
+        <td><h2>Grupos</h2></td>
+    </tr>
+</table>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ object.id }}</td>
+            <td>{{ object.nombre }}</td>
+        <tr>
+    <tbody>
+</table> 
+<a
+href="{% url 'grupos' %}"
+class="btn btn-danger"
+style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+><i class="fa fa-search fa-sm" title="List Back">Volver</i>
+</a>   
+{% endblock contenido %}

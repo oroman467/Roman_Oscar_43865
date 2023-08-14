@@ -1,0 +1,14 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+{% block titulo %} Carreras {% endblock titulo %}
+{% block cabecera %} Carreras {% endblock cabecera %} 
+{%block contenido%}
+    <h3>Carreras<h3>
+    <form action = ""method="POST">
+        {% csrf_token %}   
+        <table>
+            {{ form.as_table }}
+        <table>
+        <input type= "submit" value= "Enviar">
+    <form>
+{% endblock contenido %}

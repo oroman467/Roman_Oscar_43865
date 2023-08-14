@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>
+        
+            {% block titulo %}
+
+                Club de Amigos Ciclistas
+
+            {% endblock titulo %}
+           
+        </title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Fontawesome icons-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'aplicacion/css/styles.css' %}" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+
+        
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="#page-top"><img src="{% static 'aplicacion/assets/img/navbar-logo.svg' %}" alt="Responsive" /></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <h2>Menu<h2>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                    {% if user.is_authenticated  %}        
+                        <li class="navbar-brand"><a class="navbar-brand" href="{% url 'inicio' %}">Inicio</a></li>
+                        <li class="navbar-brand"><a class="navbar-brand" href="{% url 'rankings' %}">Ranking</a></li>
+                        <li class="navbar-brand"><a class="navbar-brand" href="{% url 'carreras' %}">Carreras</a></li>
+                        <li class="navbar-brand"><a class="navbar-brand" href="{% url 'grupos' %}">Grupos</a></li>
+                        <li class="navbar-brand"><a class="navbar-brand" href="{% url 'ciclistas' %}">Ciclistas</a></li>
+                        <li class="navbar-brand"><a class="navbar-brand" href="{% url 'acerca_de_mi' %}">Autor</a></li>
+                        <li class="navbar-brand"><a class="navbar-brand" href="{% url 'admin:index' %}">Admin</a></li>
+                        <li class="btn btn-info"><a class="navbar-brand" href="{% url 'logout' %}">Logout</a></li>
+                        <p style="color:green">Bienvenido {{ user.username|upper }}</p>
+                        <div class="text-center">
+                            <img src="{{ request.session.avatar }}" height="40px" weight="40px"/>
+                        </div> 
+                        <li class="navbar-brand"><a class="navbar-brand" href="{% url 'editar_perfil' %}">Editar Perfil</a></li>
+                        <li class="navbar-brand"><a class="navbar-brand" href="{% url 'agregar_avatar' %}">Editar Avatar</a></li>
+                    {% else %}
+                        <li class="btn btn-info"><a class="navbar-brand" href="{% url 'login' %}">Login</a></li>
+                        <li class="btn btn-success"><a class="navbar-brand" href="{% url 'register' %}">Registro</a></li>
+                        <li class="navbar-brand"><a class="navbar-brand" href="{% url 'acerca_de_mi' %}">Autor</a></li>
+                                                {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container">
+                <div class="masthead-subh eading"><h2><p style="color:white">Bienvenido a Club de Amigos Ciclistas de Down Hill!<h2></div>
+                <div class="masthead-heading text-uppercase"><h2><p style="color:yellow">Unite al club!<h2></div>
+                <div class="timeline-image"><img class="img-fluid" src="{% static 'aplicacion/assets/img/bike2.jpg' %}" alt="Responsive" /></div>
+            </div>
+        </header>
+
+        {% if mensaje %}
+        <h4>
+            <p style="color:red" align="center">
+            {{ mensaje }}
+            </p>
+        </h4>
+        {% endif %}
+        
+        {% block contenido %}
+               
+        {% endblock contenido %}
+      
+         <!-- About-->
+        <section class="page-section" id="about">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Nosotros</h2>
+                    <h3 class="section-subheading text-muted">El primer club de amigos ciclistas fundado en 1980</h3>
+                </div>
+                <ul class="timeline">
+                    <li>
+                        <div class="timeline-image">
+                            <img class="rounded-circle img-fluid" src="{% static 'aplicacion/assets/img/1.jpg' %}" alt="..."/></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>1980-1990</h4>
+                                <h4 class="subheading">Los comienzos</h4>
+                            </div>
+                            <div class="timeline-body"><p class="text-muted"><h3>Eramos un grupo de algunos amigos ciclistas que se juntaban a andar por la zonas cerca del lago o el rio. A pedalear!<h3></p></div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="{% static 'aplicacion/assets/img/2.jpg' %}" alt="..." /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>1991-2002</h4>
+                                <h4 class="subheading">La comision</h4>
+                            </div>
+                            <div class="timeline-body"><p class="text-muted"><h3>Mas organizados eramos la comision de ciclistas que organizaba eventos chicos y salidas a otros lugares mas lejanos. A viajar!<h3></p></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="{% static 'aplicacion/assets/img/3.jpg' %}" alt="..." /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>2003-2011</h4>
+                                <h4 class="subheading">Transicion al Nacional</h4>
+                            </div>
+                            <div class="timeline-body"><p class="text-muted"><h3>Pasamos de ser un grupo a competir en carreras y eventos ganando Provinciales y llegando al Nacional de Mountain Bike!<h3></p></div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="{% static 'aplicacion/assets/img/4.jpg' %}" alt="..." /></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4>2012 a Hoy</h4>
+                                <h4 class="subheading">Expansion</h4>
+                            </div>
+                            <div class="timeline-body"><p class="text-muted"><h3>Hoy somos un club de mas de 100 socios, con objetivos claros siendo el mas grande la Region!<h3></p></div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-image">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+ 

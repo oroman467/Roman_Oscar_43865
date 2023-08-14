@@ -1,0 +1,41 @@
+{% extends 'aplicacion/base.html' %}
+
+{% load static %}
+
+{% block contenido %}
+<br>
+<br>
+    <div class="container">
+       <h2 class="text-center text-dark">
+           Acerca de Mi
+       </h2>
+       <br>
+       <div class="row g-4">
+           <div class="col-md-6 col-lg-3">
+               <div class="card bg-success">
+                    <div class="card-body text-center">
+                        <img src="{% static 'aplicacion/assets/img/bari.jpg' %}" class="rounded-circle mb-3" width="200px">
+                    <h3 class="card-title mb-3">Oscar Roman</h3>
+                    <p class="card-text">Ing. Ind. Aprendiz de Python</p>
+                    <p class="card-text">Escribime a:oroman467@hotmail.com</p>
+                    <a href="https://github.com/oroman467"><i class="bi bi-github text-dark mx-1"></i></a>
+                    <a href="https://www.linkedin.com/in/oroman467/"><i class="bi bi-linkedin text-dark mx-1"></i></a>
+                    </div>
+               </div>
+           </div>
+           <div class="col">
+            <div class="">
+                 <div class="text-center">
+                    <p>Hola! Mi nombre es Oscar, soy Ingeniero Industrial trabajo en abastecimiento en una empresa y estoy aprendiendo el lenguaje de programación y comenzando a conocer Python y el Framework Django. 
+                        Muchas Gracias por visitar mi página y no dejes de contactarme!</p>
+                 </div>
+            </div>
+        </div>
+       </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+
+{% endblock %}
